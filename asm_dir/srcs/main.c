@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 04:02:28 by fdidelot          #+#    #+#             */
-/*   Updated: 2018/05/02 07:31:01 by snedir           ###   ########.fr       */
+/*   Updated: 2018/05/03 08:29:12 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,13 @@ int		check_s_ponkt(char *str, t_env *e)
 
 	i = 0;
 	k = 0;
-	while (str[i++])
-		;
+	i = ft_strlen(str) + 1;
 	j = i;
+	if (i < 4)
+		return (0);
 	if (str[i - 3] == '/' || str[i - 2] != 's' || str[i - 3] != '.')
 		return (0);
-	while (str[i] != '/')
+	while (str[i] != '/' && i >= 0)
 		i--;
 	if (!(e->name_file = (char *)ft_memalloc(sizeof(char) * (j - i + 1))))
 		ft_perror("malloc() failed.\n");
@@ -113,7 +114,6 @@ int		check_s_ponkt(char *str, t_env *e)
 			ifator(e, i, j, k);
 		k++;
 	}
-	e->name_file[k] = '\0';
 	return (1);
 }
 

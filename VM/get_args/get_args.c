@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 05:15:24 by snedir            #+#    #+#             */
-/*   Updated: 2018/04/28 02:18:04 by gquerre          ###   ########.fr       */
+/*   Updated: 2018/05/03 07:30:33 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,22 @@ int		read_nb_bytes(t_env *e, int arg_size, t_process *process, int offset)
 	unsigned int	stock;
 	int				pos;
 
-	i = 1;
+	i = 0;
 	stock = 0;
 	iter = 0;
 	pos = 0;
-	t = (unsigned char*)ft_memalloc(sizeof(char) * (arg_size * 8));
-	while (i < arg_size + 1)
+	t = NULL;
+	if (!(t = (unsigned char*)ft_memalloc(sizeof(char) * (arg_size * 8))))
+		ft_perror("malloc allocation failed");
+	while (++i < arg_size + 1)
 	{
 		pos = process->pc + iter + offset;
 		pos = (pos < 0) ? MEM_SIZE + pos : pos;
-		stock = e->arena[pos % MEM_SIZE];
-		dec_to_bin(stock, t, i * 8, arg_size * 8);
-		i++;
+		dec_to_bin(e->arena[pos % MEM_SIZE], t, i * 8, arg_size * 8);
 		iter++;
 	}
 	stock = bin_to_dec(arg_size, t, arg_size * 8);
-	free(t);
-	t = NULL;
+	ft_memdel((void**)&t);
 	return (stock);
 }
 

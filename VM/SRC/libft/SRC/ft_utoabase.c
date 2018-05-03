@@ -6,7 +6,7 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 03:54:28 by gquerre           #+#    #+#             */
-/*   Updated: 2017/09/28 06:51:21 by gquerre          ###   ########.fr       */
+/*   Updated: 2018/05/03 07:56:12 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*ft_utoa_base(unsigned int value, int base)
 	i = ft_sizechar(value, base);
 	if (!(nbr = ft_memalloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	nbr[i + 1] = '\0';
 	while (i-- > 0)
 	{
 		nbr[i] = (value % base) + ((value % base > 9) ? 'a' - 10 : '0');

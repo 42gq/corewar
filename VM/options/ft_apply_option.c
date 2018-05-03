@@ -6,7 +6,7 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 06:01:56 by gquerre           #+#    #+#             */
-/*   Updated: 2018/04/26 01:41:17 by gquerre          ###   ########.fr       */
+/*   Updated: 2018/05/03 07:35:38 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ int	ft_load_dump(t_env *e, char *argv)
 	e->dump_on = ft_atoi(argv);
 	tmp = ft_itoa(e->dump_on);
 	k = ft_strcmp(tmp, argv);
-	free(tmp);
+	ft_strdel(&tmp);
+	if (e->dump_on < 1)
+		return (0);
 	return ((k) ? 0 : 1);
 }
 
 int	ft_apply_option(t_env *e, char *argv, int i)
 {
-	int	k;
-	int	tmp;
+	int		k;
+	int		tmp;
+	char	*nbr;
 
 	tmp = e->option;
 	e->option = 0;
@@ -42,8 +45,13 @@ int	ft_apply_option(t_env *e, char *argv, int i)
 	else if (tmp == 2 && e->forced_nb_for_pl == 0)
 	{
 		e->forced_nb_for_pl = ft_atou(argv);
-		if (ft_strcmp(ft_utoa_base(e->forced_nb_for_pl, 10), argv))
+		nbr = ft_utoa_base(e->forced_nb_for_pl, 10);
+		if (ft_strcmp(nbr, argv))
+		{
+			ft_strdel(&nbr);
 			return (0);
+		}
+		ft_strdel(&nbr);
 		return (1);
 	}
 	return (0);

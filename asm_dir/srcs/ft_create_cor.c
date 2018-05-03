@@ -6,7 +6,7 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 02:10:52 by gquerre           #+#    #+#             */
-/*   Updated: 2018/05/01 04:47:40 by snedir           ###   ########.fr       */
+/*   Updated: 2018/05/03 08:05:39 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_create_cor(t_env *e)
 	unsigned char	lol[4];
 
 	empty = 0;
-	if ((fd = open(e->name_file, O_CREAT | O_WRONLY, 0600)) == -1)
+	if ((fd = open(e->name_file, O_CREAT | O_WRONLY | O_TRUNC, 0600)) == -1)
 		return (-1);
 	number_to_hex(MAGIC_NUMBER, lol);
 	write(fd, lol, 4);

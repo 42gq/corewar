@@ -6,7 +6,7 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 01:20:17 by gquerre           #+#    #+#             */
-/*   Updated: 2018/04/28 07:15:39 by gquerre          ###   ########.fr       */
+/*   Updated: 2018/05/03 07:51:09 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_op_info	g_op_tab[17] =
 
 int	main_two(t_env *e)
 {
+	if (e->forced_nb_for_pl)
+		return (ft_error(e, 8));
 	if (e->option > 0 || e->forced_nb_for_pl > 0)
 		return (ft_error(e, 9));
 	if (ft_init_process(e) == 0)
