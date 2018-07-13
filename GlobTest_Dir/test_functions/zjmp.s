@@ -1,0 +1,2 @@
+.name "zjmp"
+.comment "DIR"
