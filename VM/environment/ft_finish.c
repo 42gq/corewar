@@ -6,7 +6,7 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 03:57:39 by gquerre           #+#    #+#             */
-/*   Updated: 2018/04/28 07:28:57 by gquerre          ###   ########.fr       */
+/*   Updated: 2018/08/15 02:45:06 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_fresh(t_env *e)
 	}
 	ft_memdel((void*)&e->arena);
 	ft_memdel((void*)&e->written_by);
-	while (++i < e->nb_of_pl)
+	while (e->nb_of_pl <= 4 && ++i < e->nb_of_pl)
 	{
 		ft_strdel(&e->players[i].name);
 		ft_strdel(&e->players[i].comment);

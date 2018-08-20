@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 04:07:34 by fdidelot          #+#    #+#             */
-/*   Updated: 2018/05/02 07:31:40 by snedir           ###   ########.fr       */
+/*   Updated: 2018/08/15 02:18:17 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		skip_empty_and_com(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '.' && !ft_isalpha(str[i]) &&
+	while (str[i] && str[i] != '.' && !ft_isalpha(str[i]) &&
 		!ft_isdigit(str[i]) && str[i] != '_')
 	{
 		if (str[i] == '#')

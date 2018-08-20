@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 02:38:44 by fdidelot          #+#    #+#             */
-/*   Updated: 2018/05/02 00:29:47 by fdidelot         ###   ########.fr       */
+/*   Updated: 2018/08/15 02:23:05 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	add_command(t_env *e, unsigned char *command, int size)
 	if (e->player_buff == NULL)
 	{
 		if (!(e->player_buff = (unsigned char *)ft_memalloc(
-				sizeof(unsigned char) * CHAMP_MAX_SIZE)))
+				sizeof(unsigned char) * CHAMP_MAX_SIZE + 1)))
 			ft_perror("malloc() failed.\n");
 	}
 	while (i < size)
