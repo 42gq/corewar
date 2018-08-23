@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 01:48:35 by fdidelot          #+#    #+#             */
-/*   Updated: 2018/05/02 03:10:25 by fdidelot         ###   ########.fr       */
+/*   Updated: 2018/08/23 18:52:35 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	name(t_env *e)
 		if (*(e->stock + e->count) == '"')
 		{
 			i++;
-			while (*(e->stock + e->count + i) != '"')
+			while (e->stock[e->count + i] != '"' && i < PROG_NAME_LENGTH + 1)
 				i++;
-			if (!stock_name(e, i))
+			if (*(e->stock + e->count + i) != '"' || !stock_name(e, i))
 				return (0);
 			e->count += i;
 		}
@@ -89,9 +89,9 @@ int	comment(t_env *e)
 		if (*(e->stock + e->count) == '"')
 		{
 			i++;
-			while (*(e->stock + e->count + i) != '"')
+			while (*(e->stock + e->count + i) != '"' && i < COMMENT_LENGTH + 1)
 				i++;
-			if (!stock_comment(e, i))
+			if (*(e->stock + e->count + i) != '"' || !stock_comment(e, i))
 				return (0);
 			e->count += i;
 		}
