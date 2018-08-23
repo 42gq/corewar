@@ -1,8 +1,8 @@
 #!/bin/sh
 S_FILES=$(ls -1 ./s_files/*.s)
 
-rm ./cor_zaz_files/*.cor
-rm ./cor_files/*.cor
+mkdir ./cor_zaz_files
+mkdir ./cor_files
 i=1
 current_file=$(echo $S_FILES | cut -d ' ' -f 1)
 echo $current_file
